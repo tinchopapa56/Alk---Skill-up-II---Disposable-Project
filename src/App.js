@@ -1,10 +1,13 @@
 import './App.css';
-import {Route, Routes, Navigate, useLocation} from "react-router-dom"
+import { lazy, Suspense } from 'react';
+import { Route, Routes, Navigate, useLocation} from "react-router-dom"
 import { AnimatePresence, motion } from 'framer-motion';
 
 import FormikLogin from "./components/unidad 3 - formik/formik Login"
-import Error404 from "./components/views/Error404/Error404"
+// import Error404 from "./components/views/Error404/Error404"
 import {Tasks} from "./components/views/Tasks/Tasks"
+
+const Error404 = lazy(()=> import("./components/views/Error404/Error404"))
 
 const RequireAuth = ( {children} )=>{
     if(!localStorage.getItem("logged")){
@@ -67,7 +70,9 @@ export const App =() => {
             exit="out"
             variants={pageTransition}
             >
-                <Error404 />
+                <Suspense fallback={<>...</>}>
+                    <Error404 />
+                </Suspense>
             </motion.div>
             } />
         </Routes>
