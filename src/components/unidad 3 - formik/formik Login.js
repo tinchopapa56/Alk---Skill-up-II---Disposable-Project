@@ -1,7 +1,10 @@
 import React from 'react'   //use state
 import { useFormik } from 'formik'
+import { useNavigate } from "react-router-dom"
 
 const FormikLogin = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
         email: "",
         password: ""
@@ -12,7 +15,10 @@ const FormikLogin = () => {
         if(!values.password){ errors.password = 'password is required' }
         return errors;
     }
-    const onSubmit = ()=>{ localStorage.setItem("logged", "yes") }
+    const onSubmit = ()=>{ 
+        localStorage.setItem("logged", "yes") 
+        navigate("/", {replace: true})
+    }
 
     const formik = useFormik( {initialValues, validate, onSubmit} )
 
