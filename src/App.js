@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import FormikLogin from "./components/views/auth/Login/formik Login"
 import FormikRegister from "./components/views/auth/Register/Register" 
-import {Tasks} from "./components/views/Tasks/Tasks"
+import Tasks from "./components/views/Tasks/Tasks"
 
 const Error404 = lazy(()=> import("./components/views/Error404/Error404"))
 

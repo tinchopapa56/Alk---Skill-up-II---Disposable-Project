@@ -38,7 +38,7 @@ const FormikLogin = () => {
             {formik.errors.password && <div> {formik.errors.password} </div>}
             </div>
             <div> 
-                <button type="submit">Enviar</button>
+                <button onClick={onSubmit} type="submit">Enviar</button>
             </div>
             <div>
                 <Link to="/register">Don´t have an account? Make One! </Link>
