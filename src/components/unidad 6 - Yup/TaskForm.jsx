@@ -24,7 +24,7 @@ function TaskForm() {
         status: Yup.string().required(required)
         })
     }
-    const formik = useFormik({ initialValues , onSubmit });
+    const formik = useFormik({ initialValues , onSubmit , validationSchema});
     const {handleSubmit, handleChange, errors, touched, handleBlur} = formik;
 
   return (

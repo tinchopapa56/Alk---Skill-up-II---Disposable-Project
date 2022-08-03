@@ -3,27 +3,20 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate, useLocation} from "react-router-dom"
 import { AnimatePresence, motion } from 'framer-motion';
 
-import FormikLogin from "./components/unidad 3 - formik/formik Login"
-// import Error404 from "./components/views/Error404/Error404"
+import FormikLogin from "./components/views/auth/Login/formik Login"
+import FormikRegister from "./components/views/auth/Register/Register" 
 import {Tasks} from "./components/views/Tasks/Tasks"
 
 const Error404 = lazy(()=> import("./components/views/Error404/Error404"))
 
 const RequireAuth = ( {children} )=>{
-    if(!localStorage.getItem("logged")){
-        return <Navigate to="/login" replace={true} />
-    } else{
-        return children;
-    }
+    if(!localStorage.getItem("logged")){ return <Navigate to="/login" replace={true} /> } 
+    else{ return children; }
 }
 
     const pageTransition = {
-        in: {
-            opacity: 1
-        },
-        out: {
-            opacity: 0
-        }
+        in: { opacity: 1 },
+        out: {  opacity: 0 }
     }
 
 export const App =() => {
@@ -59,6 +52,20 @@ export const App =() => {
                     variants={pageTransition}
                 >
                 <FormikLogin />
+                </motion.div>
+                } 
+            />
+            <Route 
+                path="/register" 
+                element={
+                <motion.div 
+                    className="page" 
+                    initial="out" 
+                    animate ="in" 
+                    exit="out"
+                    variants={pageTransition}
+                >
+                <FormikRegister />
                 </motion.div>
                 } 
             />
