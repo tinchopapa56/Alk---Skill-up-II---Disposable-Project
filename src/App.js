@@ -1,4 +1,4 @@
-import './App.css';
+
 import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate, useLocation} from "react-router-dom"
 import { AnimatePresence, motion } from 'framer-motion';
@@ -41,6 +41,7 @@ export const App =() => {
                     }
                 />
             {/* <Route path="/login" element={<FormikLogin />} /> */}
+           
             <Route 
                 path="/login" 
                 element={

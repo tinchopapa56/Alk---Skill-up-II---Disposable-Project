@@ -6,56 +6,49 @@ import * as Yup from "yup"
 
 const FormikLogin = () => {
 
-    const navigate = useNavigate();
-
-    // const clearToken = ()=> {
-    //     localStorage.clear()
-    //     console.log(localStorage.getItem("logged"));
-    // }
-
     const initialValues = {
         email: "",
         password: ""
     }
 
-    const validationSchema = ()=> {
-        Yup.object.shape({
-            email: Yup.string().email().required("Campo obligatorio"),
-            password: Yup.string()
-                .min(6, "La cantidad minima son 6")
-                .required("Campo obligatorio")
-        })
-    }
     const onSubmit = ()=>{ 
         localStorage.setItem("logged", "yes") 
         navigate("/", {replace: true})
     }
 
+    const validationSchema = Yup.object().shape({
+            email: Yup.string().email().required("Campo obligatorio"),
+            password: Yup.string()
+                .min(6, "La cantidad minima son 6")
+                .required("Campo obligatorio")
+        });
+
+    const navigate = useNavigate();
+
+    
+
     const formik = useFormik( {initialValues, validationSchema, onSubmit} )
-    const { handleSubmit, handleChange, values, errors} = formik
+    const { handleSubmit, handleChange, handleBlur, touched, errors} = formik
 
   return (
     <div className="auth">
         <form onSubmit={handleSubmit}> 
             <h1>Iniciar Sesion</h1>
+
             <div> 
                 <label>Email</label>
-                <input 
-                    type="email" 
-                    name="email"
-                    onChange={handleChange} 
-                    value={values.email} 
-                />
-                {errors.email && <div> {errors.email} </div>}
+                <input name="email" onChange={handleChange} onBlur={handleBlur}/>
             </div>
+            {errors.email && touched.email && <span className="error-message"> {errors.email}</span>}
             <div>     
                 <label>Password</label>
-                <input onChange={handleChange} value={values.password} type="text" name="password" />
-                {errors.password && <div> {errors.password} </div>}
+                <input onChange={handleChange} type="password" name="password" />
             </div>
+            {errors.password && <div> {errors.password} </div>}
             <div> 
-                <button onClick={onSubmit} type="button">Enviar</button>
+                <button type="submit">Enviar</button>
             </div>
+
             <div>
                 <Link to="/register">Don´t have an account? Make One! </Link>
             </div>

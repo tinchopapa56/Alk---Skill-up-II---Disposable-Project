@@ -1,4 +1,5 @@
 import {Header} from '../../Header/Header'
+import TaskForm from './TaskForm'
 import { useEffect, useState } from 'react'
 import "./Tasks.styles.css"
 
@@ -27,6 +28,7 @@ const Tasks = () => {
         <>
             <Header />
             <main id="tasks">
+                <TaskForm />
                 <section className='wrapper_list'>
                     <div className="list_header"> 
                         <h2> My Tasks </h2>
