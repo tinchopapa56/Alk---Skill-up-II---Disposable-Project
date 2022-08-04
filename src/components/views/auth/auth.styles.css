@@ -2,6 +2,78 @@
     text-decoration: none;
     color: #999;
 } */
+
+/* UNIDAD 5 - CLASE 2*/
+.auth{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    font-family: "Nunito", sans-serif;
+}
+
+.auth > form {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.auth > form > div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px 0;
+}
+.auth > form > div > div {
+    color: var(--global-primary-color);
+    font-size: 15px;
+}
+
+.auth > form > div > *:not(label) {
+    padding: 8px 0;
+}
+
+.auth button {
+    transition: all 0.3s ease-out;
+    background-color: var(--global-primary-color);
+    border-radius: var(--global-radius);
+    color: white;
+    padding: 15px !important;
+    font-size: 16px;
+}
+.auth input{
+    border-radius: var(--global-radius);
+    border: var(--global-border);
+}
+
+.auth button:hover {
+    color: var(--global-bg-color);
+    background-color: white;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+    .auth{
+        background-color: #fafafa;
+    }
+    .auth > form {
+        border: var(--global-border);
+        width: 400px;
+        border-radius: var(--global-radius);
+        box-shadow: rgba(17,12,46,0.15) 0px 48px 100px 0px;
+        background-color: var(--global-bg-color);
+    }
+}
+
+/*UNIDAD 7 INCOMPLETO*/
 a{
     text-decoration: none;
     color: #999;
@@ -10,10 +82,4 @@ a{
 .auth select {
     border-radius: var(--global-radius);
     border: var(--global-border);
-}
-.auth button {
-    transition: all 0.3s ease-out;
-    background-color: var(--global-primary-color);
-    border-radius: var(--global-radius);
-    border: 0;
 }
